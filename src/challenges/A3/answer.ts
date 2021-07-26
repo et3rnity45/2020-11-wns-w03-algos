@@ -8,13 +8,15 @@
 * @param messages List of messages, unsorted and without unread property
 * @returns Sorted list of messages with the unread information
 */
-
-// ↓ uncomment bellow lines and add your response!
-/*
-export default function ({ lastActivityDatetime, messages } : { lastActivityDatetime: string, messages: Message[] }): MessageWithUnread[] {
-    return [];
+export default function ({ lastActivityDatetime, messages }: { lastActivityDatetime: string, messages: Message[] }): MessageWithUnread[] {
+    const messagesWithUnread = messages.map((message) => {
+        const isRead: boolean = message.sentAt > lastActivityDatetime;
+        return { ...message, unread: isRead };
+    });
+    return messagesWithUnread.sort((a, b) => {
+        return new Date(a.sentAt).getTime() - new Date(b.sentAt).getTime();
+    });
 }
-*/
 
 // used interfaces, do not touch
 export interface Message {

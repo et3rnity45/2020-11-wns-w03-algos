@@ -7,7 +7,7 @@ export default {
         { author: 'Thibault', sentAt: '2020-11-08T21:13:43.093Z', message: "What's up?" },
         { author: 'Thibault', sentAt: '2020-11-09T11:11:22.093Z', message: "Heoh" },
         { author: 'Joseph', sentAt: '2020-11-10T14:15:32.093Z', message: "Yeah sorry" },
-        { author: 'Joseph', sentAt: '2020-11-10T10:23:32.093Z', message: "Hi" },
         { author: 'Thibault', sentAt: '2020-11-05T18:12:32.093Z', message: "Welcome in the new channel" },
+        { author: 'Joseph', sentAt: '2020-11-10T10:23:32.093Z', message: "Hi" },
     ]
 } as { messages: Message[] };

@@ -5,13 +5,13 @@
  * @param students Unsorted list of students
  * @returns Sorted list of students
  */
-
-// ↓ uncomment bellow lines and add your response!
-/*
 export default function ({ students }: { students: Student[] }): Student[] {
-    return [];
+    students.sort((a, b) => {
+        return a.age - b.age || Number(b.name < a.name) - 1;
+    });
+    return students;
 }
-*/
+
 
 // used interfaces, do not touch
 export interface Student {

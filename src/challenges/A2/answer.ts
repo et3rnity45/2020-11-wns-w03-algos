@@ -7,13 +7,17 @@
  * @param groups List of groups without skills, but with students
  * @returns List of groups with a new prop skills
  */
-
-// ↓ uncomment bellow lines and add your response!
-/*
 export default function ({ groups }: { groups: Group[] }): GroupWithSills[] {
-    return [];
+    const newGroups = groups.map((group) => {
+        const skills = group.students.map((student) => {
+            return student.skills;
+        });
+        const set = new Set(skills.flat());
+        return { ...group, skills: Array.from(set).sort() };
+    });
+    return newGroups;
 }
-*/
+
 
 // used interfaces, do not touch
 interface Student {

@@ -25,13 +25,36 @@
  * @param messages List of messages, unsorted and not grouped in days
  * @returns Sorted list of days (only days with messages!) with a list of sorted messages of the day
  */
+// @ts-nocheck
+export default function ({ messages }: { messages: Message[] }): any {
+    const groupBySentAt = (array) => {
+        return array.reduce((previousObj, obj) => {
+            const day = new Date(obj['sentAt']);
+            day.setHours(1, 0, 0, 0);
+            const isoDay = day.toISOString();
+            previousObj[isoDay] = (previousObj[isoDay] || []).concat(obj);
+            return previousObj;
+        }, {});
+    }
 
-// ↓ uncomment bellow lines and add your response!
-/*
-export default function ({ messages }: { messages: Message[] }): DayMessages[] {
-    return [];
+    const messagesBySentAt = groupBySentAt(messages);
+    const messagesByDay = Object.entries(messagesBySentAt).map(([day, messages]) => {
+        return { day, messages }
+    });
+    
+    const sortedMessages = messagesByDay.map(messagesOfTheDay => {
+        messagesOfTheDay.messages = messagesOfTheDay.messages.sort((a, b) => {
+            return new Date(a.sentAt).getTime() - new Date(b.sentAt).getTime();
+        })
+        return messagesOfTheDay;
+    });
+
+    const sortedDayMessages = sortedMessages.sort((a, b) => {
+        return new Date(a.day).getTime() - new Date(b.day).getTime();
+    });
+    return sortedDayMessages;
 }
-*/
+
 
 // used interfaces, do not touch
 export interface Message {

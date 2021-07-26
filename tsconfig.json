@@ -1,9 +1,9 @@
 {
     "compilerOptions": {
-        "target": "es2018",
+        "target": "es2019",
         "module": "commonjs",
         "lib": [
-            "es2018",
+            "es2019",
             "esnext.asynciterable"
         ],
         "experimentalDecorators": true,
