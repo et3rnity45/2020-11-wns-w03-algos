@@ -34,7 +34,6 @@ const NS_PER_SEC = 1e9;
             } catch (e) {
                 console.error(`🔥 Uh oh, something went wrong! See exception bellow: 🔥`);
                 console.error(e);
-                e.printStackTrace();
             }
         }
     }

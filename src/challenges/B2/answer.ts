@@ -7,11 +7,18 @@
  */
 
 // ↓ uncomment bellow lines and add your response!
-/*
 export default function ({ events }: { events: EventWithCategory[] }): string[] {
-    return [];
+    const categories: string[] = [];
+    events.forEach((event) => {
+        event.categories.forEach((category) => {
+            if (!categories.includes(category)) {
+                categories.push(category);
+            }
+        })
+    })
+    return categories.sort();
 }
-*/
+
 
 // used interfaces, do not touch
 export interface EventWithCategory {
